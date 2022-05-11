@@ -12,6 +12,8 @@ module.exports = function route(app) {
 
 	app.post("/api/sendEmail", sendMail);
 
+	app.post("/api/login", login);
+	app.get("/api/user", getUser);
 	// 404
 	app.get("*", (req, res) => {
 		res.status(404).sendFile("404.html", { root: __dirname });
