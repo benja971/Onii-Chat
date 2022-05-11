@@ -14,11 +14,14 @@ function editJSON(path, callback) {
 	// read file
 	const obj = loadJSON(path);
 
-	// call the callback function
-	callback(obj);
+	// check if object exists
+	if (obj) {
+		// call the callback function
+		callback(obj);
 
-	// write file
-	saveJSON(path, obj);
+		// write file
+		saveJSON(path, obj);
+	}
 }
 
 module.exports = {

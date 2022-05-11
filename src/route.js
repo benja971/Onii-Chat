@@ -1,6 +1,6 @@
 const express = require("express");
 
-const register = require("./controllers/register");
+const { test, sendMail } = require("./controllers/register");
 
 // Route function called by both http and https servers
 module.exports = function route(app) {
@@ -8,7 +8,9 @@ module.exports = function route(app) {
 	app.use("/", express.static("public"));
 
 	// API
-	app.post("/api/register", register);
+	app.get("/api/verifyEmail", test);
+
+	app.post("/api/sendEmail", sendMail);
 
 	// 404
 	app.get("*", (req, res) => {
